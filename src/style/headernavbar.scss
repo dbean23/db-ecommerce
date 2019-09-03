@@ -1,9 +1,14 @@
 .header {
+    grid-row: header-s/header-e;
     display: grid;
     justify-content: center;
+    grid-column: 1/-1;
 }
 
 .navbar {
+    grid-row: navbar-s/navbar-e;
     box-shadow: 0 2px 6px 0 rgba(0,0,0,0.2);
     background-color: #333;
+    grid-column: 1/-1;
 }
+
