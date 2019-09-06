@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-
 import * as actions from '../../actions';
+
 import AccountInformation from './accountInformation';
 import PurchaseHistory from './purchaseHistory';
 
-export default class Account extends Component {
+class Account extends Component {
 
     componentDidMount(){
+
+        const headerLinks = [
+            {
+                _id: 0,
+                title: 'Shop',
+                path: '/shop'
+            },
+            {
+                _id: 1,
+                title: 'Logout',
+                path: '/logout'
+            }
+        ]
+
         const setNavbarLinks = [
             {
                 _id: 0,
@@ -24,7 +38,7 @@ export default class Account extends Component {
             }
         ]
 
-        this.props.setHeaderLinks([]);
+        this.props.setHeaderLinks([headerLinks]);
         this.props.setNavbarLinks(navbarLinks);
     }
 
@@ -54,3 +68,5 @@ function mapStateToProps(state) {
 }
 
 Account = connect(mapStateToProps, actions)(Account);
+
+export default Account;
