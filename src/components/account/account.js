@@ -1,8 +1,42 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+
+import * as actions from '../../actions';
+import AccountInformation from './accountInformation';
+
 export default class Account extends Component {
+
+    componentDidMount(){
+        const setNavbarLinks = [
+            {
+                _id: 0,
+                title: 'Purchase History',
+                active: false,
+                component: <PurchaseHistory/>
+            },
+            {
+                _id: 1,
+                title: 'Account Information',
+                active: true,
+                component: <AccountInformation/>
+            }
+        ]
+
+        this.props.setHeaderLinks([]);
+        this.props.setNavbarLinks(navbarLinks);
+    }
+
     renderContent() {
-        return <h1> content </h1>
+        let jsx;
+        if(this.props.navbarLinks) {
+            this.props.navbarLinks.map(link => {
+                if(link.active) {
+                    jsx = link.component
+                }
+            })
+        }
+        return jsx;
     }
     render () {
         return (
@@ -12,3 +46,10 @@ export default class Account extends Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    const { headerLinks, navbarLinks } = state.headerNavBar;
+    return { headerLinks, navbarLinks }
+}
+
+Account = connect(mapStateToProps, actions)(Account);
