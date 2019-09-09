@@ -1,9 +1,10 @@
 .purchase-history {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+
 
     &__content {
         margin: 37px 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
     }
     &__page-title {
         border-bottom: 1px solid #CCC;
